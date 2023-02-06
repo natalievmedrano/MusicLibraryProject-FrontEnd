@@ -1,36 +1,30 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+import MusicTable from "./Components/MusicTable/MusicTable";
+
 
 function App() {
-  const[entries, setEntries]= useState([{title:'Breathe(in the air)' , artist:'Pink Floyd', album:'Dark Side of the Moon', genre:'Classic Rock', release_Date:'03/01/1973' }])
-  return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Album</th>
-            <th>Genre</th>
-            <th>Release Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {entries.map((entry)=> {
-            return (
-              <tr>
-                <td>{entry.title}</td>
-                <td>{entry.artist}</td>
-                <td>{entry.album}</td>
-                <td>{entry.genre}</td>
-                <td>{entry.release_Date}</td>
+  const[songs, setSongs]= useState([{title: 'Breathe(in the Air)' ,artist: 'Pink Floyd', album: 'Dark Side of the Moon', release_Date: '03-01-1973', genre:'Classic Rock'} ]);
 
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
+  useEffect(()=> {
+    getAllSongs();
+  },[])
+
+  async function getAllSongs(){
+    let response = await axios.get('http://127.0.0.1:8000/api/songs/');
+    setSongs(response.data)
+  }
+
+  //async function createSong(newSong){
+    //let response = await axios.post('http://127.0.0.1:8000/api/songs/', newSong);
+    //if(response.status === 201){
+      //await getAllSongs();
+    //}
+ // }
+  
+    return (
+      <div><MusicTable parentSong={songs}/></div>
+    )
 }
 
 export default App;
