@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import MusicTable from "./Components/MusicTable/MusicTable";
-
+import NavigationBar from "./Components/NavigationBar/NavigationBar";
 
 function App() {
   const[songs, setSongs]= useState([{title: 'Breathe(in the Air)' ,artist: 'Pink Floyd', album: 'Dark Side of the Moon', release_Date: '03-01-1973', genre:'Classic Rock'} ]);
@@ -23,7 +23,9 @@ function App() {
  // }
   
     return (
-      <div><MusicTable parentSong={songs}/></div>
+      <div>
+        <NavigationBar/>
+            <MusicTable parentSong={songs}/></div>
     )
 }
 
