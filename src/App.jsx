@@ -12,20 +12,22 @@ function App() {
 
   async function getAllSongs(){
     let response = await axios.get('http://127.0.0.1:8000/api/songs/');
-    setSongs(response.data)
+    console.log(`ALL SONGS:`,response.data)
   }
 
-  //async function createSong(newSong){
-    //let response = await axios.post('http://127.0.0.1:8000/api/songs/', newSong);
-    //if(response.status === 201){
-      //await getAllSongs();
-    //}
- // }
+  async function createSong(newSong){
+    let response = await axios.post('http://127.0.0.1:8000/api/songs/', newSong);
+    if(response.status === 201){
+      await getAllSongs();
+    }
+  }
+
+  
   
     return (
       <div>
-        <NavigationBar/>
-            <MusicTable parentSong={songs}/></div>
+        <NavigationBar/> <button onClick={getAllSongs}>ALL SONGS</button>
+            <MusicTable parentSong={songs}/> <button onClick={createSong}>ADD SONG</button> </div>
     )
 }
 
