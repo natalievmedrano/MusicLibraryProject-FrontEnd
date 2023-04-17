@@ -1,9 +1,10 @@
 
 
 const NavigationBar = (props) => {
-    return ( <table>
-        <h1>MUSIC LIBRARY</h1><input type="All" placeholder="search for song by title" /><button>Search</button>
-    </table>
+    return ( <div>
+        <h1>MUSIC LIBRARY</h1>
+        </div>
+ 
 
     );
 }

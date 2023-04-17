@@ -3,12 +3,9 @@ import axios from "axios";
 import MusicTable from "./Components/MusicTable/MusicTable";
 import NavigationBar from "./Components/NavigationBar/NavigationBar";
 import './App.css'
-import SearchBar from "./Components/SearchBar/SearchBar";
-
+import FilteredSongs from "./Components/FilterSongs/SearchBar";
 function App() {
-  const[songs, setSongs]= useState([{title: 'Breathe(in the Air)' ,artist: 'Pink Floyd', album: 'Dark Side of the Moon', release_Date: '03-01-1973', genre:'Classic Rock'} ]);
-  const[filteredMusic,setFilteredMusic]= useState(songs)
-  const [searchKeyword, setSearchKeyword] = useState("");
+  const[songs, setSongs]= useState([]);
 
   useEffect(()=> {
     getAllSongs();
@@ -28,23 +25,18 @@ function App() {
   }
 
 
-  const handleSearch = () => {
-    const filteredMusic = songs.filter((song) =>
-      song.title.toLowerCase().includes(searchKeyword.toLowerCase())
-    );
-    setFilteredMusic(filteredMusic);
-  };
+ 
+
+
   
   
     return (
       <div id="body">
-        {/* <NavigationBar/> <button onClick={getAllSongs}>ALL SONGS</button> */}
-        <SearchBar
-        value={searchKeyword}
-        onChange={setSearchKeyword}
-        onSubmit={handleSearch}
-      />
-            <MusicTable parentSong={songs}/> <button onClick={createSong}>ADD SONG</button> </div>
+        <NavigationBar/> 
+        <FilteredSongs
+         songs={songs} setSongs={setSongs} 
+      /><button class="text-white bg-dark" onClick={getAllSongs}>Reset Filter</button>
+            <MusicTable songs={songs}/> <button onClick={createSong}>ADD SONG</button> </div>
     )
 }
 
