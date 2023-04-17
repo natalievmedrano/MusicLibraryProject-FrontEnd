@@ -2,7 +2,7 @@
 
 const NavigationBar = (props) => {
     return ( <div>
-        <h1>MUSIC LIBRARY</h1>
+        <h1>MY MUSIC LIBRARY</h1>
         </div>
  
 

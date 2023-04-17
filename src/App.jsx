@@ -35,8 +35,7 @@ function App() {
       <button class="text-white bg-dark" onClick={getAllSongs}>
         Reset Filter
       </button>
-      <MusicTable songs={songs} />{" "}
-      <AddNewSong newsong={createSong}/>
+      <MusicTable songs={songs} /> <AddNewSong createSong={createSong} />
     </div>
   );
 }
