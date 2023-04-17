@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddNewSong = (props) => {
+const AddNewSong = ({songs}) => {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [album, setAlbum] = useState("");
@@ -16,7 +16,7 @@ function handleSubmit(event) {
       release_date: release_date,
       genre: genre,
     };
-    props.createSong(createdSong);
+    songs.createSong(createdSong);
   }
 
   return (
@@ -54,7 +54,7 @@ function handleSubmit(event) {
           onChange={(event) => setGenre(event.target.value)}
         />
       </div>
-      <button type="submit">Add Song</button>
+      <button type="submit" className="button">Add Song</button>
     </form>
   );
 };
