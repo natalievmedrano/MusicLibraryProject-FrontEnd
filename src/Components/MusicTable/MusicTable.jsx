@@ -27,6 +27,10 @@ const MusicTable = (props) => {
     let musicRows= songs.map((song)=> (
         <tr>
             <td>{song.title}</td>
+            <td>{song.artist}</td>
+            <td>{song.album}</td>
+            <td>{song.release_date}</td>
+            <td>{song.genre}</td>
            
         </tr>
     ))
