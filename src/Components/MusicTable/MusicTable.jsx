@@ -1,6 +1,9 @@
+import { hover } from "@testing-library/user-event/dist/hover";
 import axios from "axios"
 import React ,{useEffect,useState} from "react";
+import Table  from "react-bootstrap/Table";
 
+import './MusicTable.css'
 
 const MusicTable = (props) => {
     const[songs,setSongs]= useState([]);
@@ -15,13 +18,13 @@ const MusicTable = (props) => {
     setSongs(response.data)
   }
 
-    async function updateSong(editSong){
-        let response = await axios.put('http://127.0.0.1:8000/api/songs/', editSong)
-        if (response.status === 200){
-          await getAllSongs()
-          console.log(`new song:`, updateSong);
-        }
-      }
+    // async function updateSong(editSong){
+    //     let response = await axios.put('http://127.0.0.1:8000/api/songs/', editSong)
+    //     if (response.status === 200){
+    //       await getAllSongs()
+    //       console.log(`new song:`, updateSong);
+    //     }
+    //   }
 
     
     let musicRows= songs.map((song)=> (
@@ -50,29 +53,7 @@ const MusicTable = (props) => {
             </thead>
             <tbody>
                 {musicRows}
-                {/* {songs.map((song)=>{
-                    return(
-                        <tr>
-                            <td>{song.title}</td> 
-                            <td>{song.artist}</td>
-                            <td>{song.album}</td>
-                            <td>{song.release_Date}</td>
-                            <td>{song.genre}</td>
-                        </tr>
-                    )
-                })} */}
             </tbody>
-            <tfoot> <h3>ADD A SONG</h3>
-                <tr>
-                    <td>Title <input type="title" /></td>
-                    <td>Artist <input type="artist" /></td>
-                    <td>Album <input type="album" /></td>
-                    <td>Release Date <input type="release date" /></td>
-                    <td>Genre <input type="genre" /> <button>ADD SONG</button></td>
-                    <button onClick={updateSong}>EDIT SONGS</button>
-                </tr>
-                
-            </tfoot>
         </table>
         </div>
     );
