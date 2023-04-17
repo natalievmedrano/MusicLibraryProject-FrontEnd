@@ -3,7 +3,7 @@ import React ,{useEffect,useState} from "react";
 
 
 const MusicTable = (props) => {
-    const[]= useState([{} ]);
+    const[songs,setSongs]= useState([]);
 
   useEffect(()=> {
     getAllSongs();
@@ -12,6 +12,7 @@ const MusicTable = (props) => {
   async function getAllSongs(){
     let response = await axios.get('http://127.0.0.1:8000/api/songs/');
     console.log(response.data)
+    setSongs(response.data)
   }
 
     async function updateSong(editSong){
@@ -22,7 +23,17 @@ const MusicTable = (props) => {
         }
       }
 
+    
+    let musicRows= songs.map((song)=> (
+        <tr>
+            <td>{song.title}</td>
+           
+        </tr>
+    ))
+    
+
     return (  
+        <div>
         <table>
             <thead>
                 <tr>
@@ -34,7 +45,8 @@ const MusicTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {props.parentSong.map((song)=>{
+                {musicRows}
+                {/* {songs.map((song)=>{
                     return(
                         <tr>
                             <td>{song.title}</td> 
@@ -44,7 +56,7 @@ const MusicTable = (props) => {
                             <td>{song.genre}</td>
                         </tr>
                     )
-                })}
+                })} */}
             </tbody>
             <tfoot> <h3>ADD A SONG</h3>
                 <tr>
@@ -58,6 +70,7 @@ const MusicTable = (props) => {
                 
             </tfoot>
         </table>
+        </div>
     );
 }
  
