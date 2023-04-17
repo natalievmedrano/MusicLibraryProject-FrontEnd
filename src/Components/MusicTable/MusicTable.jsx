@@ -1,8 +1,8 @@
 import "./MusicTable.css";
 
 const MusicTable = ({ songs }) => {
-  let musicRows = songs.map((song) => (
-    <tr>
+  let musicRows = songs.map((song, key) => (
+    <tr key={key}>
       <td>{song.title}</td>
       <td>{song.artist}</td>
       <td>{song.album}</td>

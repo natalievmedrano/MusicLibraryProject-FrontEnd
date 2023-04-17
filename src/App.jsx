@@ -31,8 +31,8 @@ function App() {
   return (
     <div id="body">
       <NavigationBar />
-      <FilteredSongs songs={songs} setSongs={setSongs} />
-      <button class="text-white bg-dark" onClick={getAllSongs}>
+      <FilteredSongs songs={songs} setSongs={setSongs}  />
+      <button onClick={getAllSongs}>
         Reset Filter
       </button>
       <MusicTable songs={songs} /> <AddNewSong createSong={createSong} />

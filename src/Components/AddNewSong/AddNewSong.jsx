@@ -23,31 +23,31 @@ function handleSubmit(event) {
     <form  onSubmit={handleSubmit}>
       <div>
         <h2>Add New Song </h2>
-        <label htmlFor="">Title</label>
+        <label>Title</label>
         <input
           type="text"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
-        <label htmlFor="">Artist</label>
+        <label>Artist</label>
         <input
           type="text"
           value={artist}
           onChange={(event) => setArtist(event.target.value)}
         />
-        <label htmlFor="">Album</label>
+        <label>Album</label>
         <input
           type="text"
           value={album}
           onChange={(event) => setAlbum(event.target.value)}
         />
-        <label htmlFor="">Release Date</label>
+        <label>Release Date</label>
         <input
           type="text"
           value={release_date}
           onChange={(event) => setReleaseDate(event.target.value)}
         />
-        <label htmlFor="">Genre</label>
+        <label>Genre</label>
         <input
           type="text"
           value={genre}

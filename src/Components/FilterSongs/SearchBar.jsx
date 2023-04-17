@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 
 const FilteredSongs = ({ songs, setSongs }) => {
 
-    const [currentCategory, setCurrentCategory] = useState()
+    const [chosenCategory, setChosenCategory] = useState()
   
     const changeFilter = (currentCategory) => {
-        setCurrentCategory(currentCategory)
+        setChosenCategory(currentCategory)
     }
 
     function filterSongs(filteredSelection) {
-        let filteredSongs = songs.filter((song) => song[currentCategory] === filteredSelection);
+        let filteredSongs = songs.filter((song) => song[chosenCategory] === filteredSelection);
         setSongs(filteredSongs)
     }
 
     return ( 
         <div onSubmit={filterSongs} className='spacing'>
-            <label class="text-white bg-dark">Select Category to filter by</label>
-            <select class="text-white bg-dark" onChange={(event) => changeFilter(event.target.value)}
-            value={currentCategory}>
+            <label >Select Category to filter by</label>
+            <select onChange={(event) => changeFilter(event.target.value)}
+            value={chosenCategory}>
                 <option value=''>All</option> 
                 <option value='title'>Title</option>
                 <option value='artist'>Artist</option>
@@ -25,10 +25,10 @@ const FilteredSongs = ({ songs, setSongs }) => {
                 <option value='release_date'>Release Date</option>
                 <option value='genre'>Genre</option>
             </select>
-            <select class="text-white bg-dark" onChange={(event) => filterSongs(event.target.value)}>
+            <select  onChange={(event) => filterSongs(event.target.value)}>
             {songs.map((song) => {
                 return (
-                    <option>{song[currentCategory]}</option>
+                    <option>{song[chosenCategory]}</option>
                     );
                 })}
             </select>
